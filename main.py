@@ -2,9 +2,9 @@ from decouple import config
 from typing import List
 
 from fastapi import FastAPI, HTTPException
+import tortoise
 from models import User_Pydantic, UserIn_Pydantic, Users
 from pydantic import BaseModel
-
 from tortoise.contrib.fastapi import HTTPNotFoundError, register_tortoise
 
 app = FastAPI(title="Tortoise ORM FastAPI example")
