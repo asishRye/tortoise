@@ -56,7 +56,6 @@ POSTGRES_PASSWORD = config('POSTGRES_PASSWORD')
 POSTGRES_DB = config('POSTGRES_DB')
 pg_url = f"postgres://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
 
-
 register_tortoise(
     app,
     db_url=pg_url,
@@ -64,3 +63,13 @@ register_tortoise(
     generate_schemas=True,
     add_exception_handlers=True,
 )
+
+TORTOISE_ORM = {
+    "connections": {"default": "postgres://postgres:mysecretpassword@localhost:5432/mydb"},
+    "apps": {
+        "models": {
+            "models": ["models", "aerich.models"],
+            "default_connection": 'default',
+        },
+    },
+}
